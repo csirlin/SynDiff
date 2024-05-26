@@ -71,10 +71,10 @@ def get_info(dataset):
 
 # load the MRI/CT scans from training data
 # validation only has MR because CT is a hidden test case for the synthrad competition 
-synthrad_train_folders = glob.glob('/home/colter/hdd6_colter/synthrad/train/Task1/brain/*')
-# synthrad_validation_folders = glob.glob('/home/colter/hdd6_colter/synthrad/validation/Task1/brain/*')
+synthrad_train_folders = sorted(glob.glob('/home/colter/hdd6_colter/synthrad/train/Task1/brain/*'))
+# synthrad_validation_folders = sorted(glob.glob('/home/colter/hdd6_colter/synthrad/validation/Task1/brain/*'))
 
-# print(synthrad_train_folders)
+print(synthrad_train_folders)
 # print(synthrad_validation_folders)
 
 # add the MRI/CT pairs to a list of (folder name, MRI, CT) tuples
@@ -89,4 +89,4 @@ for folder in synthrad_train_folders: #+ synthrad_validation_folders:
 # print(len(paired_files))
 
 # get scan shapes and intensity ranges for each MRI/CT pair
-get_info(paired_files)
+# get_info(paired_files)
