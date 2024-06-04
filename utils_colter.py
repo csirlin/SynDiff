@@ -147,12 +147,14 @@ def save_dataset(dataset, desc):
         np.save(f'/home/colter/hdd6_colter/synthrad_train_np/{dataset[i][0]}/ct_{desc}.npy', dataset[i][2])
     print()
 
-def get_middle_n(data, n):
-    bottom = data.shape[0] // 2 - n // 2
-    top = bottom + n
-    return data[bottom:top, :, :, :]
+def get_middle_n(data, num, gap):
+    length = (num - 1) * gap + 1
+    bottom = data.shape[0] // 2 - length // 2
+    top = bottom + length
+    print(f"\t\tnum = {num}, gap = {gap}, {data.shape[0]} slices: selecting {range(bottom, top, gap) } ")
+    return data[bottom:top:gap, :, :, :]
 
-def concat_middle_ns(paired_files, n):
+def concat_middle_ns(paired_files, num = 35, gap = 1):
     mri_concat = np.zeros((0, 1, 256, 256))
     ct_concat = np.zeros((0, 1, 256, 256))
     # print(mri_concat.shape)
@@ -165,6 +167,6 @@ def concat_middle_ns(paired_files, n):
         # print(paired_files[i][2].shape)
         # print(get_middle_n(paired_files[i][1], n).shape)
         # print(get_middle_n(paired_files[i][2], n).shape)
-        mri_concat = np.concatenate((mri_concat, get_middle_n(paired_files[i][1], n)), axis = 0)
-        ct_concat = np.concatenate((ct_concat, get_middle_n(paired_files[i][2], n)), axis = 0)
+        mri_concat = np.concatenate((mri_concat, get_middle_n(paired_files[i][1], num = num, gap = gap)), axis = 0)
+        ct_concat = np.concatenate((ct_concat, get_middle_n(paired_files[i][2], num = num, gap = gap)), axis = 0)
     return mri_concat, ct_concat

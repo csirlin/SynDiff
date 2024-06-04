@@ -590,7 +590,7 @@ def train_syndiff(rank, gpu, args):
             optimizer_gen_non_diffusive_2to1.step()           
             
             global_step += 1
-            if iteration % 100 == 0:
+            if iteration % 10 == 0:
                 if rank == 0:
                     print('epoch {} iteration{}, G-Cycle: {}, G-L1: {}, G-Adv: {}, G-cycle-Adv: {}, G-Sum: {}, D Loss: {}, D_cycle Loss: {}'.format(epoch,iteration, errG_cycle.item(), errG_L1.item(),  errG_adv.item(), errG_cycle_adv.item(), errG.item(), errD.item(), errD_cycle.item()))
         
