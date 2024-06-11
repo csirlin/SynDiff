@@ -13,14 +13,16 @@ import warnings
 import torch
 from torch.optim import Optimizer
 
-
+# Exponential moving average
 class EMA(Optimizer):
     def __init__(self, opt, ema_decay):
+        super().__init__(params=opt.param_groups, defaults=dict()) # needed to add this for EMA to work but I may have done it wrong
         self.ema_decay = ema_decay
         self.apply_ema = self.ema_decay > 0.
         self.optimizer = opt
         self.state = opt.state
         self.param_groups = opt.param_groups
+        # print(self._optimizer_load_state_dict_post_hooks)
 
     def step(self, *args, **kwargs):
         retval = self.optimizer.step(*args, **kwargs)
