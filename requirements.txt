@@ -1,3 +1,5 @@
+# installing the commented out packages doesn't work, you have to install 
+# pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu124
 filelock==3.13.1
 fsspec==2024.2.0
 h5py==3.11.0
@@ -24,14 +26,14 @@ nvidia-nvjitlink-cu12==12.4.99
 nvidia-nvtx-cu12==12.4.99
 packaging==24.0
 Pillow==9.3.0
-pytorch-triton==3.0.0+45fff310c8
+# pytorch-triton==3.0.0+45fff310c8
 scikit-image==0.23.2
 scikit-learn==1.5.0
 scipy==1.13.1
 sympy==1.12
 threadpoolctl==3.5.0
 tifffile==2024.5.22
-torch==2.4.0.dev20240527+cu124
-torchaudio==2.2.0.dev20240527+cu124
-torchvision==0.19.0.dev20240527+cu124
+# torch==2.4.0.dev20240527+cu124
+# torchaudio==2.2.0.dev20240527+cu124
+# torchvision==0.19.0.dev20240527+cu124
 typing_extensions==4.8.0
